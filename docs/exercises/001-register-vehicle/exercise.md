@@ -27,7 +27,7 @@ Esta funcionalidad constituye el primer módulo del proyecto Smart Parking Platf
 
 # Contexto
 
-El sistema permitirá que un conductor registre uno o más vehículos propios para utilizarlos dentro de la plataforma de Smart Parking.
+El sistema Smart Parking permitirá que un conductor registrado asocie uno o más vehículos a su cuenta para utilizarlos dentro de la plataforma.
 
 Además de la identificación automática mediante la patente, los inspectores de tránsito deberán poder verificar visualmente que el vehículo estacionado corresponde al registrado.
 
@@ -35,31 +35,45 @@ Además de la identificación automática mediante la patente, los inspectores d
 
 # Objetivo
 
-Permitir registrar un vehículo con toda la información necesaria para su identificación lógica y visual.
-
+Permitir registrar un vehículo asociado a un conductor, almacenando toda la información necesaria para su identificación lógica dentro del sistema y su identificación visual por parte de los inspectores de tránsito.
 ---
 
 # Historia de Usuario
 
 > Como conductor registrado,
-> quiero registrar un vehículo indicando su patente, marca, modelo y color,
-> para que el sistema pueda identificarlo automáticamente y los inspectores puedan verificar visualmente que el vehículo corresponde al registrado.
+quiero registrar un vehículo indicando su patente, marca, modelo y color,
+para que el sistema pueda identificarlo automáticamente mediante la patente y los inspectores puedan corroborar visualmente, a través de la marca, modelo y color, que el vehículo estacionado corresponde al registrado.
 
 ---
 
 # Precondiciones
 
 - El usuario debe haber iniciado sesión.
+- El usuario debe encontrarse registrado en el sistema.
+
+---
+
+# Reglas de negocio
+
+- Un usuario puede registrar más de un vehículo.
+- Un vehículo solamente puede pertenecer a un usuario.
+- La patente identifica unívocamente al vehículo.
 
 ---
 
 # Criterios de aceptación
 
-- El usuario puede registrar un vehículo.
-- Todos los campos son obligatorios.
-- La patente debe ser única.
-- El vehículo queda asociado al usuario.
-- El sistema informa claramente si el registro fue exitoso o si ocurrió un error.
+1. El usuario puede registrar un vehículo.
+2. Los siguientes campos son obligatorios:
+   - Patente
+   - Marca
+   - Modelo
+   - Color
+3. La patente debe ser única dentro del sistema.
+4. El vehículo queda asociado al usuario que realizó el registro.
+5. El vehículo se almacena correctamente en la base de datos.
+6. El sistema informa claramente si el registro fue exitoso.
+7. Si ocurre un error de validación, el sistema informa el motivo.
 
 ---
 

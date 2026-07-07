@@ -14,7 +14,7 @@ El objetivo de este repositorio no es únicamente desarrollar software, sino con
 
 # Metodología de trabajo
 
-## Fase 1 – Análisis (realizada por mí)
+## Fase 1 – Análisis 
 
 Antes de utilizar cualquier herramienta de IA realizo el análisis funcional de la necesidad.
 
@@ -146,3 +146,9 @@ Al finalizar cada funcionalidad documento brevemente:
 - Toda propuesta generada por IA debe ser revisada.
 - Todo aprendizaje debe quedar documentado.
 - Cada funcionalidad debe ser trazable desde su origen hasta su implementación.
+
+---
+
+# Regla N.º 1 del laboratorio: 
+
+Antes de ejecutar un comando que modifique el estado del proyecto mediante OpenSpec (explore, propose, apply, etc.), realizar un commit de todo el trabajo previo.
