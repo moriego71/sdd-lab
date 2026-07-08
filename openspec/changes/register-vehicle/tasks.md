@@ -1,46 +1,101 @@
-## 1. Project scaffolding
+# Tareas de implementación
 
-- [ ] 1.1 Initialize application project structure (package manager, entry point, test runner)
-- [ ] 1.2 Configure environment and development scripts (start, test, migrate)
-- [ ] 1.3 Add auth stub middleware that injects a fixed authenticated user context for development and tests
+## 1. Preparación del proyecto
 
-## 2. Persistence layer
+- [ ] 1.1 Inicializar la estructura base del proyecto (gestor de paquetes, punto de entrada y framework de pruebas).
+- [ ] 1.2 Configurar el entorno de desarrollo y los scripts principales (inicio, pruebas y migraciones).
+- [ ] 1.3 Incorporar un middleware de autenticación simulado (stub) que inyecte un usuario autenticado fijo durante el desarrollo y las pruebas.
 
-- [ ] 2.1 Create minimal `users` seed or table to satisfy ownership precondition
-- [ ] 2.2 Create `vehicles` schema with columns: id, user_id, plate, brand, model, color, created_at
-- [ ] 2.3 Add UNIQUE constraint on normalized `plate` column
-- [ ] 2.4 Implement `VehicleRepository` with `save(vehicle)` and `existsByPlate(normalizedPlate)` methods
+---
 
-## 3. Domain and validation
+## 2. Capa de persistencia
 
-- [ ] 3.1 Implement `PlateNormalizer` (trim, uppercase, remove internal whitespace)
-- [ ] 3.2 Implement field validator for required plate, brand, model, color (non-empty after trim, max 100 chars)
-- [ ] 3.3 Define domain types/errors: `ValidationError`, `DuplicatePlateError`, `AuthenticationRequiredError`
+- [ ] 2.1 Crear una tabla (o registro inicial) de usuarios que permita cumplir la relación de pertenencia del vehículo.
+- [ ] 2.2 Crear la estructura de la entidad **Vehículo** con los siguientes atributos:
+  - id
+  - user_id
+  - patente
+  - marca
+  - modelo
+  - color
+  - fecha_alta
+- [ ] 2.3 Definir una restricción **UNIQUE** sobre la patente normalizada.
+- [ ] 2.4 Implementar el repositorio `VehicleRepository` con, al menos, las siguientes operaciones:
+  - `save(vehicle)`
+  - `existsByPlate(normalizedPlate)`
 
-## 4. Application service
+---
 
-- [ ] 4.1 Implement `VehicleRegistrationService.register(userId, input)` orchestrating normalize → validate → uniqueness check → persist
-- [ ] 4.2 Ensure vehicle is always associated with the authenticated `userId` from context (never from request body)
-- [ ] 4.3 Return structured success payload with registered vehicle data
+## 3. Dominio y validaciones
 
-## 5. HTTP API
+- [ ] 3.1 Implementar el componente `PlateNormalizer`, encargado de:
+  - eliminar espacios al principio y al final;
+  - convertir la patente a mayúsculas;
+  - eliminar espacios internos.
+- [ ] 3.2 Implementar la validación de los campos obligatorios:
+  - patente;
+  - marca;
+  - modelo;
+  - color.
 
-- [ ] 5.1 Implement `POST /vehicles` endpoint wired to `VehicleRegistrationService`
-- [ ] 5.2 Map success to HTTP 201 with message and vehicle object
-- [ ] 5.3 Map validation errors to HTTP 400 with field-level `errors` array
-- [ ] 5.4 Map duplicate plate to HTTP 409 with message "La patente ya está registrada"
-- [ ] 5.5 Map missing authentication to HTTP 401
+  Las validaciones deberán verificar:
+  - que el campo no esté vacío;
+  - que no contenga únicamente espacios;
+  - que no supere los 100 caracteres.
 
-## 6. Tests
+- [ ] 3.3 Definir los errores de dominio:
+  - `ValidationError`
+  - `DuplicatePlateError`
+  - `AuthenticationRequiredError`
 
-- [ ] 6.1 Test successful registration (happy path)
-- [ ] 6.2 Test duplicate plate (exact and normalized variants)
-- [ ] 6.3 Test each required field missing or whitespace-only
-- [ ] 6.4 Test unauthenticated request returns 401
-- [ ] 6.5 Test vehicle is linked to the authenticated user
+---
 
-## 7. Verification
+## 4. Servicio de aplicación
 
-- [ ] 7.1 Run full test suite and confirm all spec scenarios pass
-- [ ] 7.2 Manually verify registration via API (curl or HTTP client) with auth stub
-- [ ] 7.3 Update exercise status in `docs/exercises/001-register-vehicle/exercise.md` when implementation is complete
+- [ ] 4.1 Implementar `VehicleRegistrationService.register(userId, input)` con el siguiente flujo:
+
+  1. Normalizar la patente.
+  2. Validar los datos.
+  3. Verificar que la patente no exista.
+  4. Persistir el vehículo.
+
+- [ ] 4.2 Garantizar que el vehículo siempre quede asociado al usuario autenticado obtenido del contexto, nunca desde los datos enviados por el cliente.
+
+- [ ] 4.3 Devolver una respuesta estructurada con la información del vehículo registrado.
+
+---
+
+## 5. API HTTP
+
+- [ ] 5.1 Implementar el endpoint `POST /vehicles`.
+- [ ] 5.2 Devolver **HTTP 201** cuando el registro sea exitoso.
+- [ ] 5.3 Devolver **HTTP 400** para errores de validación, indicando los campos afectados.
+- [ ] 5.4 Devolver **HTTP 409** cuando la patente ya exista, mostrando el mensaje:
+
+```
+La patente ya está registrada.
+```
+
+- [ ] 5.5 Devolver **HTTP 401** cuando el usuario no se encuentre autenticado.
+
+---
+
+## 6. Pruebas
+
+- [ ] 6.1 Verificar el registro exitoso de un vehículo.
+- [ ] 6.2 Verificar que no sea posible registrar una patente duplicada, incluso cuando existan diferencias de mayúsculas o espacios.
+- [ ] 6.3 Verificar la ausencia de cada campo obligatorio y los casos con espacios en blanco.
+- [ ] 6.4 Verificar que una solicitud sin autenticación responda con **HTTP 401**.
+- [ ] 6.5 Verificar que el vehículo quede asociado correctamente al usuario autenticado.
+
+---
+
+## 7. Verificación final
+
+- [ ] 7.1 Ejecutar toda la batería de pruebas y comprobar que todos los escenarios definidos por la especificación se cumplen.
+- [ ] 7.2 Realizar una prueba manual del registro de vehículos utilizando la API (por ejemplo mediante `curl` o un cliente HTTP).
+- [ ] 7.3 Actualizar el estado del ejercicio en:
+
+`docs/exercises/001-register-vehicle/exercise.md`
+
+marcándolo como completado una vez finalizada la implementación.

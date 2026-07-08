@@ -152,3 +152,33 @@ Al finalizar cada funcionalidad documento brevemente:
 # Regla N.º 1 del laboratorio: 
 
 Antes de ejecutar un comando que modifique el estado del proyecto mediante OpenSpec (explore, propose, apply, etc.), realizar un commit de todo el trabajo previo.
+
+
+# Regla N° 2 del Laboratorio:
+
+## Conservación de la documentación
+
+OpenSpec nunca debe sobrescribir documentación previamente elaborada por el ingeniero.
+
+Cuando una especificación evolucione deberá:
+
+- agregar nuevas secciones;
+- crear nuevos documentos;
+- registrar revisiones;
+- anexar información al final del documento;
+
+pero nunca reemplazar ni eliminar contenido existente, salvo que el ingeniero lo solicite explícitamente.
+
+El objetivo es preservar la trazabilidad completa de las decisiones tomadas durante el proceso de desarrollo.
+
+
+# Regla N° 3 del Laboratorio:
+
+## Principio de trazabilidad
+Todo artefacto generado durante el proceso de SDD constituye evidencia del proceso de ingeniería.
+
+Ningún documento se elimina.
+
+Ningún documento se sobrescribe.
+
+Las decisiones evolucionan mediante nuevos artefactos o nuevas versiones, manteniendo siempre el historial completo del proyecto.
