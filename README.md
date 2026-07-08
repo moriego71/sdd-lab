@@ -15,3 +15,7 @@ El objetivo de este repositorio no es únicamente desarrollar software, sino con
 
 # Plantilla de funcionalidades: 
 `docs/templates/functional-feature.md`
+
+---
+
+"Este proyecto fue desarrollado siguiendo una metodología propia basada en Specification-Driven Development. Cada funcionalidad nace de un ejercicio funcional, pasa por exploración, revisión de ingeniería, propuesta, diseño, planificación, implementación y retrospectiva. La IA participa en todas las etapas, pero las decisiones de arquitectura y negocio permanecen bajo control del ingeniero."
