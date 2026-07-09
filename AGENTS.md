@@ -195,4 +195,113 @@ La responsabilidad final sobre el diseño pertenece siempre al ingeniero.
 
 ---
 
-Todo el código fuente (clases, funciones, atributos, variables y nombres de archivos) deberá escribirse en inglés. La documentación funcional y metodológica permanecerá en español.
+## Convenciones de idioma
+
+- Todo el código fuente (clases, funciones, métodos, atributos, variables, módulos, paquetes y nombres de archivos) deberá escribirse en **inglés**.
+- Toda la documentación funcional, metodológica y de ingeniería deberá escribirse en **español**.
+- Todos los mensajes dirigidos al usuario (mensajes de error, respuestas de la API, mensajes informativos, texto mostrado por consola para validación funcional, etc.) deberán escribirse en **español**.
+- Los comentarios del código deberán escribirse en **español**, salvo que exista un motivo técnico para hacerlo en inglés.
+- Nunca mezclar idiomas dentro de un mismo mensaje. Los identificadores internos permanecen en inglés y los textos visibles para el usuario en español.
+
+### Ejemplos
+
+**Correcto**
+
+- Variable: `plate`
+- Clase: `VehicleRepository`
+- Método: `exists_by_plate()`
+- Mensaje al usuario: `"La patente ya está registrada."`
+- Respuesta HTTP: `"Autenticación requerida."`
+
+**Incorrecto**
+
+- `"Plate already exists."`
+- `"Vehicle registered successfully."`
+- `"Please enter brand."`
+
+---
+
+Toda decisión tomada durante el laboratorio tiene prioridad sobre las convenciones por defecto del modelo. Si existe una decisión documentada en AGENTS.md, el asistente deberá respetarla en todas las iteraciones siguientes, salvo instrucción explícita del ingeniero.
+
+---
+
+# Granularidad de las iteraciones
+
+Cada Apply deberá implementar una única responsabilidad claramente identificable.
+
+Las iteraciones deberán ser pequeñas, fácilmente revisables y con un impacto arquitectónico acotado.
+
+Si una implementación requiere múltiples responsabilidades, deberá dividirse en varios Apply.
+
+---
+
+# Objetivo de cada Apply
+
+Cada Apply deberá:
+
+- implementar únicamente la tarea correspondiente;
+- respetar todas las decisiones arquitectónicas vigentes;
+- mantener el proyecto compilable;
+- no introducir deuda técnica innecesaria;
+- dejar preparada la siguiente iteración.
+
+---
+
+# Documentación generada
+
+Cuando el agente produzca documentación del laboratorio deberá:
+
+- generar un único documento Markdown;
+- no dividir la respuesta en múltiples bloques;
+- conservar el orden cronológico de la explicación;
+- incluir únicamente el contenido solicitado;
+- evitar agregar secciones no requeridas.
+
+El documento deberá quedar listo para copiar y pegar en el repositorio del laboratorio.
+
+---
+
+# Antes de implementar
+
+Antes de generar código el agente deberá explicar brevemente:
+
+- qué archivos creará;
+- qué archivos modificará;
+- por qué son necesarios esos cambios.
+
+La explicación debe ser breve y orientada al diseño.
+
+---
+
+# Evolución incremental
+
+No implementar componentes futuros.
+
+No crear clases "por las dudas".
+
+No agregar interfaces, servicios o repositorios que todavía no hayan sido especificados.
+
+La arquitectura debe evolucionar exclusivamente mediante nuevas especificaciones.
+
+---
+
+# Criterio de calidad
+
+Antes de considerar finalizada una implementación, verificar que:
+
+- respeta Clean Architecture;
+- mantiene bajo acoplamiento;
+- posee alta cohesión;
+- no rompe decisiones anteriores;
+- resulta fácil de comprender por un desarrollador nuevo.
+
+---
+
+# Principio de mínima implementación
+
+Cuando existan varias implementaciones posibles que satisfagan la especificación, elegir la más simple.
+
+No incorporar flexibilidad, extensibilidad o abstracciones adicionales hasta que una especificación futura las justifique.
+
+---
+

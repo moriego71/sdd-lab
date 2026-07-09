@@ -1,10 +1,41 @@
 # Apply 003
 
 ## Objetivo
+/opsx:apply
 
-Continuar la implementación del Ejercicio 001 definiendo la abstracción de persistencia del dominio.
+Continuemos con la tercera iteración del Ejercicio 001.
 
-En esta tercera iteración se incorpora la interfaz `VehicleRepository`, responsable de declarar las operaciones necesarias para almacenar y consultar vehículos, manteniendo el dominio completamente desacoplado de cualquier tecnología de persistencia. No se implementa aún PostgreSQL, repositorios concretos, servicios de aplicación, API HTTP, autenticación ni tests.
+Respetá las decisiones definidas en:
+
+- AGENTS.md
+- proposal.md
+- design.md
+- tasks.md
+
+Stack tecnológico:
+
+- Lenguaje: Python
+- Base de datos: PostgreSQL (todavía no implementar)
+
+En esta iteración implementá únicamente la abstracción de persistencia.
+
+Objetivos:
+
+1. Definir la interfaz `VehicleRepository`.
+2. Declarar las operaciones necesarias para este caso de uso:
+   - `save(vehicle)`
+   - `exists_by_plate(normalized_plate)`
+3. Mantener completamente desacoplado el dominio de cualquier tecnología de persistencia.
+4. No implementar todavía PostgreSQL.
+5. No implementar repositorios concretos.
+6. No implementar servicios de aplicación.
+7. No implementar API HTTP.
+8. No implementar autenticación.
+9. No implementar tests.
+
+Antes de generar código, explicá brevemente qué archivos vas a crear o modificar y por qué.
+
+Al finalizar, exportá toda la respuesta en un único bloque Markdown para poder archivarla como documentación del laboratorio. No agregues contenido nuevo; únicamente reformatéala en un único bloque Markdown.
 
 ---
 
@@ -44,8 +75,6 @@ Objetivos:
 Antes de generar código, explicá brevemente qué archivos vas a crear o modificar y por qué.
 
 Al finalizar, exportá toda la respuesta en un único bloque Markdown para poder archivarla como documentación del laboratorio. No agregues contenido nuevo; únicamente reformatéala en un único bloque Markdown.
-
----
 
 # Respuesta de OpenSpec
 ```markdown
